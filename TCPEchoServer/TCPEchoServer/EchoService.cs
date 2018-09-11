@@ -33,7 +33,22 @@ namespace TCPEchoServer
                         break;
                     }
 
-                    if (message.ToUpper().Contains("GET"))
+                    if (message.ToUpper().Contains("HTML"))
+                    {
+                        Console.WriteLine(message);
+                        string uri = message.Split(' ').Last();
+                        var file = new StreamReader(@"C:\" + uri);
+                        string line;
+                        int count = 0;
+                        while ((line = file.ReadLine()) != null)
+                        {
+                            sw.WriteLine(line);
+                            count++;
+                        }
+                        file.Close();
+                    }
+
+                    else if (message.ToUpper().Contains("GET"))
                     {
                         Console.WriteLine(message);
                         //answer = message.Split(' ').Last();
