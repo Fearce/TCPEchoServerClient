@@ -36,7 +36,8 @@ namespace TCPEchoServer
                     if (message.ToUpper().Contains("GET"))
                     {
                         Console.WriteLine(message);
-                        answer = message.Split(' ').Last();
+                        //answer = message.Split(' ').Last();
+                        answer = "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\nConnection: close\r\nHello Client!";
                         sw.WriteLine(answer);
                         message = sr.ReadLine();
                     }
