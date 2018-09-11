@@ -38,14 +38,17 @@ namespace TCPEchoServer
                         Console.WriteLine(message);
                         string uri = message.Split(' ').Last();
                         var file = new StreamReader(@"C:\" + uri);
+                        var fileLength = File.ReadAllLines(@"C:\" + uri).Length;
                         string line;
                         int count = 0;
-                        while ((line = file.ReadLine()) != null)
+                        while ((line = file.ReadLine()) != null && count<fileLength)
                         {
                             sw.WriteLine(line);
                             count++;
                         }
                         file.Close();
+                        Console.WriteLine(fileLength);
+                        message = sr.ReadLine();
                     }
 
                     else if (message.ToUpper().Contains("GET"))
