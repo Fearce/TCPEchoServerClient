@@ -35,7 +35,7 @@ namespace TCPEchoClient
             StreamReader sr = new StreamReader(ns);
             StreamWriter sw = new StreamWriter(ns);
             sw.AutoFlush = true; // enable automatic flushing
-            Task.Run((() =>
+            Task.Run((() => //Printer response på en seperat tråd så konsollen stadig er klar til Msg();
             {
                 while (true)
                 {
@@ -60,30 +60,6 @@ namespace TCPEchoClient
         {
             string message = Console.ReadLine(); //Sends original message
             sw.WriteLine(ClientName + " : " + message); //Writes message to server
-            
-    
-
-                
-
-            //if (message.ToUpper().Contains("GET")) //Hvis jeg sender et get request
-            //{
-            //    //Task.Run((() =>
-            //    //{
-            //        string serverAnswerNew = sr.ReadLine(); //Gem det næste svar til sammenligning
-            //        while (serverAnswerNew != serverAnswer && serverAnswerNew != null && serverAnswer != null) //Så længe der er et nyt svar, send flere writelines
-            //        {
-            //            Thread.Sleep(100);
-            //            Console.WriteLine("Response: " + serverAnswerNew);
-            //            serverAnswer = serverAnswerNew;
-            //            serverAnswerNew = sr.ReadLine();
-            //        }
-
-            //        Console.WriteLine("done");
-            //        sw.WriteLine(ClientName + " received GET-request");
-            //  // }));
-
-            //}
-
 
         }
 
